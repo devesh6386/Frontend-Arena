@@ -1,0 +1,14 @@
+# The deployable Next.js app lives in the ./life-receipts subdirectory rather
+# than at the repository root, so the build has to run from there.
+# Per Netlify's configuration rules, `command` and `publish` below are resolved
+# relative to `base`.
+
+[build]
+  base = "life-receipts"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js 14.2 predates Node 24 (the current build image default), so pin the
+  # build to the Node 22 LTS line this version of Next.js is tested against.
+  NODE_VERSION = "22"
